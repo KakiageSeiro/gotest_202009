@@ -8,8 +8,8 @@ func Test_retrunError(t *testing.T) {
 	tests := []struct {
 		name    string
 		wantErr bool
-		got error
-		v int
+		got     error
+		v       int
 	}{
 		{"nilが返却される",
 			false,

@@ -38,7 +38,7 @@ func Test_addUser(t *testing.T) {
 
 // addUserで追加したユーザを今度は、syncAddUsersでまとめて登録
 func Test_syncAddUsers(t *testing.T) {
-	us := []user{u1,u2,u3}
+	us := []user{u1, u2, u3, u3}
 	if err := syncAddUsers(us); err != ErrAlreadyExists {
 		t.Errorf("%sを期待したが、%s", ErrAlreadyExists, err)
 	}
@@ -52,7 +52,7 @@ func Test_syncAddUsers(t *testing.T) {
 // 内部では非同期処理の実装が求められます。
 // https://golang.org/pkg/sync/
 func Test_asyncAddUsers(t *testing.T) {
-	us := []user{u4,u5,u8, u6,u1,u2,u3, u7}
+	us := []user{u4, u5, u8, u6, u1, u2, u3, u7, u4}
 	if err := asyncAddUsers(us); err != ErrAlreadyExists {
 		t.Errorf("%sを期待したが、%s", ErrAlreadyExists, err)
 	}
