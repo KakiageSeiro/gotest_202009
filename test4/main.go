@@ -7,8 +7,14 @@ var (
 )
 
 // deferを使う
-func deferTest() error {
-	defer fire()
+func deferTest()(err error){
+	//defer fire()
+	defer func(){
+		err2 := fire()
+		if err2 != nil {
+			err = ErrFire
+		}
+	}()
 	return errors.New("ダミーエラー")
 }
 
