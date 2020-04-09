@@ -60,8 +60,9 @@ func (AuthImpl) Delete(email, password string) error {
 		if userDetails[i].email == email && userDetails[i].password == password {
 			fmt.Println(userDetails)
 			fmt.Println(i)
-			unset(userDetails, i)
-			fmt.Println(userDetails)
+			newUserDetails := unset(userDetails, i)
+			fmt.Println(newUserDetails)
+			userDetails = newUserDetails
 
 			return nil
 		}
@@ -73,5 +74,13 @@ func unset(uds []userDetail, i int) []userDetail {
 	if i >= len(uds) {
 		return uds
 	}
-	return append(uds[:i], uds[i+1:]...)
+
+	newSlise := []userDetail{}
+	for i2 := range uds {
+		if(i != i2){
+			newSlise = append(newSlise, uds[i2])
+		}
+	}
+
+	return newSlise
 }
