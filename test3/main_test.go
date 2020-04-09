@@ -6,9 +6,9 @@ import (
 )
 
 var (
-	email = "test@example.com"
+	email    = "test@example.com"
 	password = "test1234TEST"
-	name = "test.taro"
+	name     = "test.taro"
 )
 
 func TestNewMemoryAuth(t *testing.T) {
